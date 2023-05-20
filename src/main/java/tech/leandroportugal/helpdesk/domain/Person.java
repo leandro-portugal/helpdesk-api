@@ -5,6 +5,7 @@ import java.time.LocalDate;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -103,7 +104,7 @@ public abstract class Person implements Serializable {
     }
 
     public Set<Profile> getProfiles() {
-        return profiles.stream().map(Profile::toEnum).collect(java.util.stream.Collectors.toSet());
+        return profiles.stream().map(Profile::toEnum).collect(Collectors.toSet());
     }
 
     public void addProfile(Profile profile) {
