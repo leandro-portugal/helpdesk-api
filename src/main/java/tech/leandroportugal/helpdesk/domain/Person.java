@@ -1,21 +1,43 @@
 package tech.leandroportugal.helpdesk.domain;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import jakarta.persistence.CollectionTable;
+import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import tech.leandroportugal.helpdesk.domain.enums.Profile;
 
-public abstract class Person {
+@Entity
+public abstract class Person implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
     protected String name;
+    @Column(unique = true)
     protected String email;
     protected String password;
+    @Column(unique = true)
     protected String document;
+    
+    @JsonFormat(pattern = "dd/MM/yyyy")
     protected LocalDate creationDate = LocalDate.now();
 
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "PROFILEs")
     protected Set<String> profiles = new HashSet<>();
 
     public Person() {
