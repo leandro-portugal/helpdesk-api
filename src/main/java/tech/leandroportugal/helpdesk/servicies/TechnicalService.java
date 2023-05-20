@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import tech.leandroportugal.helpdesk.domain.Technical;
 import tech.leandroportugal.helpdesk.repositories.TechnicalRepository;
+import tech.leandroportugal.helpdesk.servicies.exceptions.ObjectNotFoundException;
 
 @Service
 public class TechnicalService {
@@ -16,8 +17,10 @@ public class TechnicalService {
 
 public Technical findById(Long id){
     Optional<Technical> obj = repository.findById(id);
-    return obj.orElse(null);
+    return obj.orElseThrow(()-> new ObjectNotFoundException("Object not found! Id: " + id));
+}
+
 }
 
 
-}
+
