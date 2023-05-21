@@ -41,6 +41,7 @@ public class TechnicalDTO implements Serializable{
 
     public TechnicalDTO(Technical obj) {
         super();
+        addProfile(Profile.CUSTOMER);
         this.id = obj.getId();
         this.name = obj.getName();
         this.email = obj.getEmail();
