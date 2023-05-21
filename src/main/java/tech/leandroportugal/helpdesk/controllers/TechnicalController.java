@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
 import tech.leandroportugal.helpdesk.domain.Technical;
 import tech.leandroportugal.helpdesk.domain.dtos.TechnicalDTO;
 import tech.leandroportugal.helpdesk.servicies.TechnicalService;
@@ -40,7 +41,7 @@ public class TechnicalController {
     }
 
     @PostMapping
-    public ResponseEntity<TechnicalDTO> create(@RequestBody TechnicalDTO objDTO){
+    public ResponseEntity<TechnicalDTO> create(@Valid @RequestBody TechnicalDTO objDTO){
         Technical obj = service.create(objDTO);
         URI uri = URI.create("/technicals/"+obj.getId());
         return ResponseEntity.created(uri).build();

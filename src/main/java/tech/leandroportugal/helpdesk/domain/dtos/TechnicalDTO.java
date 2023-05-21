@@ -7,6 +7,7 @@ import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import jakarta.validation.constraints.NotNull;
 import tech.leandroportugal.helpdesk.domain.Technical;
 import tech.leandroportugal.helpdesk.domain.enums.Profile;
 
@@ -18,11 +19,13 @@ public class TechnicalDTO implements Serializable{
 
 
     protected Long id;
+    @NotNull(message = "Name field is required")
     protected String name;
-    
+    @NotNull(message = "Email field is required")
     protected String email;
+    @NotNull(message = "Password field is required")
     protected String password;
-   
+    @NotNull(message = "Document field is required")
     protected String document;
     
     @JsonFormat(pattern = "dd/MM/yyyy")
