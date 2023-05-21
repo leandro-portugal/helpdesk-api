@@ -11,6 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotNull;
 import tech.leandroportugal.helpdesk.domain.enums.Priority;
 import tech.leandroportugal.helpdesk.domain.enums.Status;
 
@@ -26,16 +27,22 @@ public class Ticket implements Serializable {
     private LocalDate openingDate = LocalDate.now();
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate closingDate;
+    @NotNull(message = "Priority field is required")
     private Priority priority;
+    @NotNull(message = "Status field is required")
     private Status status;
+    @NotNull(message = "Title field is required")
     private String title;
+    @NotNull(message = "Observation field is required")
     private String observation;
 
     @ManyToOne
     @JoinColumn(name = "technical_id")
+    @NotNull(message = "Technical field is required")
     private Technical technical;
     @ManyToOne
     @JoinColumn(name = "customer_id")
+    @NotNull(message = "Customer field is required")
     private Customer customer;
 
     public Ticket() {
