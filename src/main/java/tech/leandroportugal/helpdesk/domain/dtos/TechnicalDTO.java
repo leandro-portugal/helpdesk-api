@@ -41,7 +41,6 @@ public class TechnicalDTO implements Serializable{
 
     public TechnicalDTO(Technical obj) {
         super();
-        addProfile(Profile.CUSTOMER);
         this.id = obj.getId();
         this.name = obj.getName();
         this.email = obj.getEmail();
@@ -49,6 +48,7 @@ public class TechnicalDTO implements Serializable{
         this.document = obj.getDocument();
         this.creationDate = obj.getCreationDate();
         this.profiles = obj.getProfiles().stream().map(x -> x.getName()).collect(Collectors.toSet());
+        addProfile(Profile.CUSTOMER);
         
     }
 
@@ -107,6 +107,11 @@ public class TechnicalDTO implements Serializable{
 
     public void addProfile(Profile profile) {
         this.profiles.add(profile.getName());
+    }
+
+
+    public void setProfiles(Set<String> profiles) {
+        this.profiles = profiles;
     }
 
     

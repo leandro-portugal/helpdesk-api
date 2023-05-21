@@ -26,6 +26,10 @@ public class Technical extends Person {
 
     }
 
+    public static long getSerialversionuid() {
+        return serialVersionUID;
+    }
+
     public Technical(Long id, String name, String email, String password, String document) {
         super(id, name, email, password, document);
         addProfile(Profile.CUSTOMER);
