@@ -34,6 +34,7 @@ public class TechnicalDTO implements Serializable{
 
     public TechnicalDTO() {
         super();
+        addProfile(Profile.CUSTOMER);
     
     }
 
