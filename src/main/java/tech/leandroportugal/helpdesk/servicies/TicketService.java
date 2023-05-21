@@ -1,5 +1,6 @@
 package tech.leandroportugal.helpdesk.servicies;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,5 +19,9 @@ public class TicketService {
     public Ticket findById(Long id) {
        Optional <Ticket> obj = repository.findById(id);
        return obj.orElseThrow(()-> new ObjectNotFoundException("Object not found id: " + id));
+    }
+
+    public List<Ticket> findAll() {
+        return repository.findAll();
     }
 }
