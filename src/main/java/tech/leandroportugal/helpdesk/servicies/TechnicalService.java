@@ -50,6 +50,16 @@ public  Technical update(Long id, TechnicalDTO objDTO) {
 
 }
 
+public void delete(Long id) {
+    
+    Technical obj = findById(id);
+    if(obj.getTickets().size() > 0) {
+        throw new DataIntegrityViolationException("Technical has tickets and can't be deleted!");
+    
+}
+    repository.deleteById(id);
+    
+}
 private void validateUniqueDocumentandMail(TechnicalDTO objDTO) {
 
     Optional<Person> obj = personRepository.findByDocument(objDTO.getDocument());  
