@@ -41,6 +41,15 @@ public Technical create(TechnicalDTO objDTO) {
     return repository.save(obj);
 }
 
+public  Technical update(Long id, TechnicalDTO objDTO) {
+    objDTO.setId(id);
+    Technical oldObj = findById(id);
+    validateUniqueDocumentandMail(objDTO);
+    oldObj = new Technical(objDTO);
+    return repository.save(oldObj);
+
+}
+
 private void validateUniqueDocumentandMail(TechnicalDTO objDTO) {
 
     Optional<Person> obj = personRepository.findByDocument(objDTO.getDocument());  

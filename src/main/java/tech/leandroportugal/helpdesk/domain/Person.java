@@ -7,6 +7,8 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import org.hibernate.validator.constraints.br.CPF;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.CollectionTable;
@@ -28,10 +30,13 @@ public abstract class Person implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
     protected String name;
+
     @Column(unique = true)
     protected String email;
     protected String password;
+
     @Column(unique = true)
+    @CPF
     protected String document;
     
     @JsonFormat(pattern = "dd/MM/yyyy")
