@@ -5,6 +5,7 @@ import java.util.Optional;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import tech.leandroportugal.helpdesk.domain.Person;
@@ -25,6 +26,9 @@ private TechnicalRepository repository;
 @Autowired
 private PersonRepository personRepository;
 
+@Autowired
+BCryptPasswordEncoder encoder;
+
 public Technical findById(Long id){
     Optional<Technical> obj = repository.findById(id);
     return obj.orElseThrow(()-> new ObjectNotFoundException("Object not found! Id: " + id));
@@ -36,6 +40,7 @@ public List<Technical> findAll() {
 
 public Technical create(TechnicalDTO objDTO) {
     objDTO.setId(null);
+    objDTO.setPassword(encoder.encode(objDTO.getPassword()));
     validateUniqueDocumentandMail(objDTO);
     Technical obj = new Technical(objDTO);
     return repository.save(obj);
