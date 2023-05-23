@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -54,6 +55,7 @@ public class SecurityConfig {
         .cors(cors -> cors.configurationSource(corsConfigurationSource()))
         .addFilter(new JWTAuthenticatorFilter(authConfiguration.getAuthenticationManager(), jwtUtil))
         .addFilter(new JWTAuthorizationFilter(authConfiguration.getAuthenticationManager(), userDetailsService, jwtUtil))
+        .sessionManagement(sessionManagement -> sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         .authorizeHttpRequests(
                 authorizeConfig ->{
                     authorizeConfig.requestMatchers(PUBLIC_MATCHERS).permitAll();
