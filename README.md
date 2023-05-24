@@ -67,7 +67,8 @@ The API is developed using the following technologies:
 4. Access the API endpoints using a tool like Postman or a web browser.
 
 Note: Make sure to set up the necessary database and provide the database configuration in the application properties file.
-
+## Frontend Repository
+The frontend source code can be found in the following repository: [Frontend Repository](https://github.com/leandro-portugal/helpdesk-web)
 ## Contributors
 
 This API is developed and maintained by the following contributors:
