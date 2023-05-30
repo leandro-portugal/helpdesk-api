@@ -49,6 +49,9 @@ public Customer create(CustomerDTO objDTO) {
 public  Customer update(Long id, CustomerDTO objDTO) {
     objDTO.setId(id);
     Customer oldObj = findById(id);
+    if(!oldObj.getPassword().equals(objDTO.getPassword())){
+        objDTO.setPassword(encoder.encode(objDTO.getPassword()));
+    }
     validateUniqueDocumentandMail(objDTO);
     oldObj = new Customer(objDTO);
     return repository.save(oldObj);
