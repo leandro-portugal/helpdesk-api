@@ -49,6 +49,9 @@ public Technical create(TechnicalDTO objDTO) {
 public  Technical update(Long id, TechnicalDTO objDTO) {
     objDTO.setId(id);
     Technical oldObj = findById(id);
+     if(!oldObj.getPassword().equals(objDTO.getPassword())){
+        objDTO.setPassword(encoder.encode(objDTO.getPassword()));
+    }
     validateUniqueDocumentandMail(objDTO);
     oldObj = new Technical(objDTO);
     return repository.save(oldObj);
