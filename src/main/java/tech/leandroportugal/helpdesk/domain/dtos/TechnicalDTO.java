@@ -37,7 +37,6 @@ public class TechnicalDTO implements Serializable{
 
     public TechnicalDTO() {
         super();
-        addProfile(Profile.CUSTOMER);
     
     }
 
@@ -51,7 +50,6 @@ public class TechnicalDTO implements Serializable{
         this.document = obj.getDocument();
         this.creationDate = obj.getCreationDate();
         this.profiles = obj.getProfiles().stream().map(x -> x.getName()).collect(Collectors.toSet());
-        addProfile(Profile.CUSTOMER);
         
     }
 

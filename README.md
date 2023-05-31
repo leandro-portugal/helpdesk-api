@@ -31,9 +31,9 @@ This repository contains the documentation for the API developed using Spring Bo
 
 The API supports the following user roles:
 
-- `customer`: All users are initially assigned the role of a customer.
-- `technical`: Additional role assigned to technical users.
-- `admin`: Additional role assigned to admin users.
+- `customer`: Role assigned to customer users.
+- `technical`: Role assigned to technical users.
+- `admin`: Role assigned to admin users.
 
 ## Ticket Status
 

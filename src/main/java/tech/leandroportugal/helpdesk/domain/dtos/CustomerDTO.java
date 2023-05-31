@@ -37,7 +37,7 @@ public class CustomerDTO implements Serializable{
 
     public CustomerDTO() {
         super();
-        addProfile(Profile.CUSTOMER);
+        
     
     }
 
@@ -51,7 +51,7 @@ public class CustomerDTO implements Serializable{
         this.document = obj.getDocument();
         this.creationDate = obj.getCreationDate();
         this.profiles = obj.getProfiles().stream().map(x -> x.getName()).collect(Collectors.toSet());
-        addProfile(Profile.CUSTOMER);
+       
         
     }
 
