@@ -14,7 +14,7 @@ public class TicketDTO implements Serializable {
 
     private Long id;
     @JsonFormat(pattern = "dd/MM/yyyy")
-    private LocalDate lastUpdDate = LocalDate.now();
+    private LocalDate lastUpdate = LocalDate.now();
     private String priority;
     private String status;
     private String title;
@@ -30,7 +30,7 @@ public class TicketDTO implements Serializable {
 
     public TicketDTO(Ticket obj) {
         this.id = obj.getId();
-        this.lastUpdDate = obj.getLastUpdate();
+        this.lastUpdate = obj.getLastUpdDate();
         this.priority = obj.getPriority().getName();
         this.status = obj.getStatus().getName();
         this.title = obj.getTitle();
@@ -49,15 +49,16 @@ public class TicketDTO implements Serializable {
         this.id = id;
     }
 
+
+
+
     public LocalDate getLastUpdate() {
-        return lastUpdDate;
+        return lastUpdate;
     }
 
-    public void setLastUpdate(LocalDate lastUpdDate) {
-        this.lastUpdDate = lastUpdDate;
+    public void setLastUpdate(LocalDate lastUpdate) {
+        this.lastUpdate = lastUpdate;
     }
-
-
 
     public String getPriority() {
         return priority;

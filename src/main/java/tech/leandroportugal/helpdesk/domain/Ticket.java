@@ -66,15 +66,15 @@ public class Ticket implements Serializable {
         this.id = id;
     }
 
-    public LocalDate getLastUpdate() {
+
+
+    public LocalDate getLastUpdDate() {
         return lastUpdDate;
     }
 
-    public void setLastUpdate(LocalDate openingDate) {
-        this.lastUpdDate = openingDate;
+    public void setLastUpdDate(LocalDate lastUpdDate) {
+        this.lastUpdDate = lastUpdDate;
     }
-
-  
 
     public Priority getPriority() {
         return priority;
