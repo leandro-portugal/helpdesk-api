@@ -2,9 +2,9 @@ package tech.leandroportugal.helpdesk.domain.enums;
 
 public enum Status {
     
-    OPEN("open", "OPEN"),
-    PROGRESS("progress", "PROGRESS"),
-    CLOSE("close", "CLOSE");
+    OPEN("open", "Aberto"),
+    PROGRESS("progress", "Em andamento"),
+    CLOSE("close", "Finalizado");
 
     private String name;
     private String description;

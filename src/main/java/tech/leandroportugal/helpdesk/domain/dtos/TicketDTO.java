@@ -31,8 +31,8 @@ public class TicketDTO implements Serializable {
     public TicketDTO(Ticket obj) {
         this.id = obj.getId();
         this.lastUpdate = obj.getLastUpdDate();
-        this.priority = obj.getPriority().getName();
-        this.status = obj.getStatus().getName();
+        this.priority = obj.getPriority().getDescription();
+        this.status = obj.getStatus().getDescription();
         this.title = obj.getTitle();
         this.observation = obj.getObservation();
         this.technical = obj.getTechnical().getId();

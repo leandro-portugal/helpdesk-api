@@ -3,9 +3,9 @@ package tech.leandroportugal.helpdesk.domain.enums;
 public enum Priority {
     
         
-    LOW("low", "LOW"),
-    MEDIUN("medium", "MEDIUN"),
-    HIGH("high", "HIGH");
+    LOW("low", "Baixa"),
+    MEDIUN("medium", "Média"),
+    HIGH("high", "Imediata");
 
     private String name;
     private String description;
