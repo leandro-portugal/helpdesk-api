@@ -14,9 +14,7 @@ public class TicketDTO implements Serializable {
 
     private Long id;
     @JsonFormat(pattern = "dd/MM/yyyy")
-    private LocalDate openingDate = LocalDate.now();
-    @JsonFormat(pattern = "dd/MM/yyyy")
-    private LocalDate closingDate;
+    private LocalDate lastUpdDate = LocalDate.now();
     private String priority;
     private String status;
     private String title;
@@ -32,8 +30,7 @@ public class TicketDTO implements Serializable {
 
     public TicketDTO(Ticket obj) {
         this.id = obj.getId();
-        this.openingDate = obj.getOpeningDate();
-        this.closingDate = obj.getClosingDate();
+        this.lastUpdDate = obj.getLastUpdate();
         this.priority = obj.getPriority().getName();
         this.status = obj.getStatus().getName();
         this.title = obj.getTitle();
@@ -52,21 +49,15 @@ public class TicketDTO implements Serializable {
         this.id = id;
     }
 
-    public LocalDate getOpeningDate() {
-        return openingDate;
+    public LocalDate getLastUpdate() {
+        return lastUpdDate;
     }
 
-    public void setOpeningDate(LocalDate openingDate) {
-        this.openingDate = openingDate;
+    public void setLastUpdate(LocalDate lastUpdDate) {
+        this.lastUpdDate = lastUpdDate;
     }
 
-    public LocalDate getClosingDate() {
-        return closingDate;
-    }
 
-    public void setClosingDate(LocalDate closingDate) {
-        this.closingDate = closingDate;
-    }
 
     public String getPriority() {
         return priority;

@@ -24,9 +24,7 @@ public class Ticket implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @JsonFormat(pattern = "dd/MM/yyyy")
-    private LocalDate openingDate = LocalDate.now();
-    @JsonFormat(pattern = "dd/MM/yyyy")
-    private LocalDate closingDate;
+    private LocalDate lastUpdDate = LocalDate.now();
     @NotNull(message = "Priority field is required")
     private Priority priority;
     @NotNull(message = "Status field is required")
@@ -68,21 +66,15 @@ public class Ticket implements Serializable {
         this.id = id;
     }
 
-    public LocalDate getOpeningDate() {
-        return openingDate;
+    public LocalDate getLastUpdate() {
+        return lastUpdDate;
     }
 
-    public void setOpeningDate(LocalDate openingDate) {
-        this.openingDate = openingDate;
+    public void setLastUpdate(LocalDate openingDate) {
+        this.lastUpdDate = openingDate;
     }
 
-    public LocalDate getClosingDate() {
-        return closingDate;
-    }
-
-    public void setClosingDate(LocalDate closingDate) {
-        this.closingDate = closingDate;
-    }
+  
 
     public Priority getPriority() {
         return priority;

@@ -1,6 +1,6 @@
 package tech.leandroportugal.helpdesk.servicies;
 
-import java.time.LocalDate;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -58,10 +58,6 @@ public class TicketService {
         Ticket ticket = new Ticket();
         if(obj.getId() != null) {
             ticket.setId(obj.getId());
-        }
-
-        if(obj.getStatus().equals("close")){
-            ticket.setClosingDate(LocalDate.now());
         }
 
         ticket.setCustomer(customer);
