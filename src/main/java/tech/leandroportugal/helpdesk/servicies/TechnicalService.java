@@ -62,7 +62,7 @@ public void delete(Long id) {
     
     Technical obj = findById(id);
     if(obj.getTickets().size() > 0) {
-        throw new DataIntegrityViolationException("Technical has tickets and can't be deleted!");
+        throw new DataIntegrityViolationException("Este técnico possui chamados e não pode ser deletado!");
     
 }
     repository.deleteById(id);
@@ -72,12 +72,12 @@ private void validateUniqueDocumentandMail(TechnicalDTO objDTO) {
 
     Optional<Person> obj = personRepository.findByDocument(objDTO.getDocument());  
     if(obj.isPresent() && obj.get().getId() != objDTO.getId()) {  
-        throw new DataIntegrityViolationException("Document already exists!");  
+        throw new DataIntegrityViolationException("Este CPF já existe!");  
     }
     
     obj = personRepository.findByEmail(objDTO.getEmail());
     if(obj.isPresent() && obj.get().getId() != objDTO.getId()) {
-        throw new DataIntegrityViolationException("Email already exists!");
+        throw new DataIntegrityViolationException("Este e-mail já existe!");
     }
 }
 }
